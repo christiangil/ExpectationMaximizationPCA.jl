@@ -8,7 +8,7 @@ module EMPCA
     const empca = PyNULL()
     # joinpath(pathof(EMPCA),"src")
     function __init__()
-        pushfirst!(PyVector(pyimport("sys")."path"), "")
+        pushfirst!(PyVector(pyimport("sys")."path"), joinpath(pathof(EMPCA),".."))
         copy!(empca, pyimport("empca"))
     end
     export empca
