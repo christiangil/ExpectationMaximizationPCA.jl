@@ -3,6 +3,9 @@ uuid = "e1a4e9fb-620a-4045-b313-23b3f0ae950a"
 authors = ["Chistian Gilbertson <chistianjgilbertson@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
 [compat]
 julia = "1"
 
