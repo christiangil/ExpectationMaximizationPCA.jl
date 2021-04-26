@@ -1,3 +1,7 @@
+"""
+Julia interface to a local verison of the empca
+(https://github.com/sbailey/empca) python package
+"""
 __precompile__()
 module EMPCA
     using PyCall
@@ -7,4 +11,5 @@ module EMPCA
         pushfirst!(PyVector(pyimport("sys")."path"), "")
         copy!(empca, pyimport("empca"))
     end
+    export empca
 end
