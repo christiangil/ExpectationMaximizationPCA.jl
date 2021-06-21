@@ -253,7 +253,7 @@ def _solve(A, b, w):
         x = scipy.sparse.linalg.spsolve(A, b)
     else:
         # x = np.linalg.solve(A, b)
-        x = np.linalg.lstsq(A, b)[0]
+        x = np.linalg.lstsq(A, b, rcond=None)[0]
 
     return x
 
