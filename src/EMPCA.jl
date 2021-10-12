@@ -8,7 +8,7 @@ module EMPCA
     const empca = PyNULL()
     function __init__()
         pyimport_conda("scipy", "scipy")
-        pushfirst!(PyVector(pyimport("sys")."path"), dirname(pathof(EMPCA)))
+        pushfirst!(PyVector(pyimport("sys")."path"), @__DIR__)
         copy!(empca, pyimport("empca"))
         @assert empca != PyNULL()
     end
