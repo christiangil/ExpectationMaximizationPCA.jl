@@ -1,33 +1,32 @@
-using EMPCA
 using Test
+using LinearAlgebra
+using MultivariateStats
+using Statistics
+using Random
+import EMPCA
 
-@testset "will EMPCA.jl work at all?" begin
-    nobs = 100
-    nvar = 200
-    nvec = 3
-    data = zeros(nobs, nvar)
+nx = 200
+b1 = sin.(((1:nx) ./ nx) * 2π)
+b2 = cos.(((1:nx) ./ nx) * 2π)
+d = rand(Random.MersenneTwister(0), 50)' .* b1 + (0.2 .* rand(Random.MersenneTwister(1), 50)') .* b2
 
-    #- Generate data
-    x = (0:(nvar - 1)) ./ (nvar - 1) .* (2 * π)
-    for i in 1:nobs
-        for k in 1:nvec
-            data[i, :] += 5.0*nvec//(k)^2 * randn() * sin.(x*(k))
-        end
+@testset "Replicating exact PCA" begin
+    M = fit(PCA, d; maxoutdim=2)
+    basis_vecs, scores = EMPCA.EMPCA!(vec(mean(d;dims=2)), 2, d, ones(size(d)))
+    for i in 1:2
+        s = sum(abs, M.proj[:, i] - basis_vecs[:, i]) < sum(abs, M.proj[:, i] + basis_vecs[:, i])
+        basis_vecs[:, i] .*= 2*s-1
+        scores[:, i] .*= 2*s-1
     end
+    @test all(isapprox.(M.proj,basis_vecs; atol=1e-6, rtol=1e-6))
+    println()
+end
 
-    #- Add noise
-    sigma = ones(size(data))
-    for i in Int.(1:(nobs//10))
-        sigma[i, :] *= 5
-        sigma[i, 1:(Int(floor(nvar/4)) + 1)] *= 5
-    end
-
-    weights = 1.0 ./ sigma.^2
-    noisy_data = data + (randn(size(sigma)) .* sigma)
-    m0 = empca.empca(noisy_data, weights, niter=20)
-    @test isreal(m0.R2())
-    m1 = empca.lower_rank(noisy_data, weights, niter=20)
-    @test isreal(m1.R2())
-    m2 = empca.classic_pca(noisy_data)
-    @test isreal(m2.R2())
+@testset "Better than PCA in a χ²-sense" begin
+    σ = ((((((1:nx) .- nx/2).^2) ./ (nx/2)^2) .+ 1)* ones(50)') ./ 6  # edges are twice as noisy as the center
+    dn = d + σ .* randn(Random.MersenneTwister(2), size(d))
+    M = fit(PCA, dn; maxoutdim=2)
+    basis_vecs, scores = EMPCA.EMPCA!(vec(mean(dn;dims=2)), 2, dn, 1 ./ σ.^2)
+    @test sum(abs2, (dn - (basis_vecs * scores .+ vec(mean(dn;dims=2)))) ./ σ) < sum(abs2, (dn - reconstruct(M, predict(M, dn))) ./ σ)
+    println()
 end
