@@ -1,4 +1,4 @@
-module EMPCA
+module ExpectationMaximizationPCA
 
 using LinearAlgebra
 
@@ -7,7 +7,7 @@ using LinearAlgebra
 
 Performs expectation-maximization principal component analysis (EMPCA) on `data` with `n_comp` basis vectors using `weights` as the weights. Pre-allocated arrays for `basis_vecs`, and `scores`, can be passed via keyword arguments.
 """
-function EMPCA!(
+function EMPCA(
     μ::AbstractVector,
     n_comp::Int, 
     data::AbstractMatrix, 

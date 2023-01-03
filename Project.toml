@@ -1,7 +1,10 @@
-name = "EMPCA"
+name = "ExpectationMaximizationPCA"
 uuid = "20521544-8895-46ad-ab44-5135df82bd8f"
 authors = ["Chistian Gilbertson <christianjgilbertson@gmail.com>"]
 version = "0.2.0"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[compat]
+julia = "1"
