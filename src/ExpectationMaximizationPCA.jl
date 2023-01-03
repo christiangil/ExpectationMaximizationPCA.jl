@@ -74,7 +74,7 @@ end
 """
     _solve_scores!(basis_vecs, scores, data, weights)
 
-Fill `scores` with those that optimally model `data` with the `basis_vecs` and weights (`w`) using generalized least squares (GLS)+
+Fill `scores` with those that optimally model `data` with the `basis_vecs` and weights (`w`) using generalized least squares (GLS)
 """
 function _solve_scores!(basis_vecs::AbstractMatrix, scores::AbstractMatrix, data::AbstractMatrix, weights::AbstractMatrix; inds::AbstractUnitRange=axes(basis_vecs, 2))
 	for i in axes(data, 2)
@@ -104,7 +104,7 @@ function _solve_eigenvectors!(basis_vecs::AbstractMatrix, scores::AbstractMatrix
 	_reorthogonalize(basis_vecs)
 end
 """
-    _solve_eigenvectors!(basis_vecs, scores, data, weights)
+    _solve_eigenvectors!(basis_vec, scores, data, weights)
 
 Fill `basis_vec` with the one that optimally model `data` with the `scores` and weights (`w`)
 """
