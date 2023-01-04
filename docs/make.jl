@@ -1,6 +1,6 @@
-push!(LOAD_PATH,"../src/")
+# push!(LOAD_PATH,"../src/")
 using Documenter
-using ExpectationMaximizationPCA
+import ExpectationMaximizationPCA
 
 # DocMeta.setdocmeta!(ExpectationMaximizationPCA, :DocTestSetup, :(using ExpectationMaximizationPCA); recursive=true)
 
@@ -16,7 +16,7 @@ makedocs(
     ]
 )
 
-# deploydocs(
-#     repo = "github.com/christiangil/ExpectationMaximizationPCA.jl.git",
-#     deploy_config = Documenter.GitHubActions(),
-# )
+deploydocs(
+    repo = "github.com/christiangil/ExpectationMaximizationPCA.jl.git",
+    deploy_config = Documenter.GitHubActions(),
+)
