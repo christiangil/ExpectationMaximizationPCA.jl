@@ -1,6 +1,8 @@
 # ExpectationMaximizationPCA.jl
 ExpectationMaximizationPCA.jl is a Julia rewrite of [empca](https://github.com/sbailey/empca) which provides weighted Expectation Maximization PCA, an iterative method for solving PCA while properly weighting data.
 
+The documentation for this package is available [here](https://christiangil.github.io/ExpectationMaximizationPCA.jl/).
+
 The paper S. Bailey 2012, PASP, 124, 1015 describes the underlying math
 and is available as a pre-print at:
 
