@@ -1,6 +1,20 @@
 # ExpectationMaximizationPCA.jl
 ExpectationMaximizationPCA.jl (EMPCA) is a Julia rewrite of [empca](https://github.com/sbailey/empca) which provides weighted Expectation Maximization PCA, an iterative method for solving PCA while properly weighting data.
 
+## Installation
+
+The most current, tagged version of [ExpectationMaximizationPCA.jl](https://github.com/christiangil/ExpectationMaximizationPCA.jl) can be easily installed using Julia's Pkg
+
+```julia
+Pkg.add("ExpectationMaximizationPCA")
+```
+
+If you would like to contribute to the package, or just want to run the latest (untagged) version, you can use the following
+
+```julia
+Pkg.develop("ExpectationMaximizationPCA")
+```
+
 ## Example
 
 ```julia
