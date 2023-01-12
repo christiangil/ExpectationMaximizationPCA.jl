@@ -38,7 +38,7 @@ basis_vecs, scores = EMPCA.EMPCA(μ, nb, data, weights)  # perform EMPCA  on `da
 ## Documentation
 The documentation for this package is available [here](https://christiangil.github.io/ExpectationMaximizationPCA.jl/).
 
-The python verion can be found [here](https://github.com/sbailey/empca).
+The original python version can be found [here](https://github.com/sbailey/empca).
 
 ## Citation
 The paper S. Bailey 2012, PASP, 124, 1015 describes the underlying math
