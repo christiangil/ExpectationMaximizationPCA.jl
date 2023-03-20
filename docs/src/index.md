@@ -21,9 +21,7 @@ ExpectationMaximizationPCA.EMPCA!
 ## Citing EMPCA
 
 If you use `ExpectationMaximizationPCA.jl` in an academic paper, please include a citation to
-S. Bailey 2012, PASP, 124, 1015 and optionally an acknowledgement such as:
-
-> This work uses the Weighted EMPCA code by Stephen Bailey, available at https://github.com/sbailey/empca/
+S. Bailey 2012, PASP, 124, 1015.
 
 BibTeX entry:
 ```
